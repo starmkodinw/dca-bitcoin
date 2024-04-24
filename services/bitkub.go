@@ -2,10 +2,7 @@ package services
 
 import (
 	"bytes"
-	"crypto/hmac"
-	"crypto/sha256"
 	"dca-bitcoin/models"
-	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -62,18 +59,4 @@ func BuyBitcoin() {
 	}
 
 	fmt.Printf("%v \n%+v\n", time.Now().UTC(), result.Result)
-}
-
-func genSign(apiSecret, payloadString string) string {
-	mac := hmac.New(sha256.New, []byte(apiSecret))
-	mac.Write([]byte(payloadString))
-	return hex.EncodeToString(mac.Sum(nil))
-}
-
-func mustMarshal(v interface{}) []byte {
-	b, err := json.Marshal(v)
-	if err != nil {
-		panic(err)
-	}
-	return b
 }
