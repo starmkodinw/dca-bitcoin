@@ -23,7 +23,7 @@ func BuyBitcoin() {
 		"sym": SYM,
 		"amt": AMOUNT,
 		"rat": 0.0,
-		"typ": "market",
+		"typ": MARKET,
 	}
 
 	payload := []string{
